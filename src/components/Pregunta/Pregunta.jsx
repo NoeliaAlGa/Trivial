@@ -45,32 +45,38 @@ const Pregunta = () => {
     
   return (
     <div>
-        <h1>{preguntasTrivial[indice].pregunta}</h1>
+        <h2>{preguntasTrivial[indice].pregunta}</h2>
         <DivPregunta>
                     <UlStyle>
                         {preguntasTrivial[indice].respuestas.map((respuesta, index) => {
                             if(respuesta === preguntasTrivial[indice].respuestCorrecta) {
                                 return <LiStyle key={index} onClick ={() => {
-                                    setIndice(indice + 1);
-                                    if(preguntasTrivial[indice + 1].categoria === "Arts & Literature") {
-                                        setImgActual(ImgArtsLiterature)
-                                    } else if(preguntasTrivial[indice + 1].categoria === "General Knowledge") {
-                                        setImgActual(ImgGeneralKnowledge)
-                                    } else if(preguntasTrivial[indice + 1].categoria === "Film & TV") {
-                                        setImgActual(ImgFilmTV)
-                                    } else if(preguntasTrivial[indice + 1].categoria === "History") {
-                                        setImgActual(ImgHistory)
-                                    } else if(preguntasTrivial[indice + 1].categoria === "Science") {
-                                        setImgActual(ImgScience)
-                                    } else if(preguntasTrivial[indice + 1].categoria === "Geography") {
-                                        setImgActual(ImgGeography)
-                                    } else if(preguntasTrivial[indice + 1].categoria === "Music") {
-                                        setImgActual(ImgMusic)
-                                    } else if(preguntasTrivial[indice + 1].categoria === "Society & Culture") {
-                                        setImgActual(ImgSocietyCulture)
+                                    if(preguntasTrivial.length -1 === indice) {
+                                        alert("EL juego a finalizado!");
+                                        setIndice(0);
                                     } else {
-                                        setImgActual(ImgSportLeisure)
+                                        setIndice(indice + 1);
+                                        if(preguntasTrivial[indice + 1].categoria === "Arts & Literature") {
+                                            setImgActual(ImgArtsLiterature)
+                                        } else if(preguntasTrivial[indice + 1].categoria === "General Knowledge") {
+                                            setImgActual(ImgGeneralKnowledge)
+                                        } else if(preguntasTrivial[indice + 1].categoria === "Film & TV") {
+                                            setImgActual(ImgFilmTV)
+                                        } else if(preguntasTrivial[indice + 1].categoria === "History") {
+                                            setImgActual(ImgHistory)
+                                        } else if(preguntasTrivial[indice + 1].categoria === "Science") {
+                                            setImgActual(ImgScience)
+                                        } else if(preguntasTrivial[indice + 1].categoria === "Geography") {
+                                            setImgActual(ImgGeography)
+                                        } else if(preguntasTrivial[indice + 1].categoria === "Music") {
+                                            setImgActual(ImgMusic)
+                                        } else if(preguntasTrivial[indice + 1].categoria === "Society & Culture") {
+                                            setImgActual(ImgSocietyCulture)
+                                        } else {
+                                            setImgActual(ImgSportLeisure)
+                                        }
                                     }
+                                    
                                 }}>{respuesta}</LiStyle>
                             } else {
                                 return <LiStyle key={index}>{respuesta}</LiStyle>
